@@ -48,7 +48,6 @@ GyroSensor::GyroSensor()
         strcat(input_sysfs_path, input_name);
         strcat(input_sysfs_path, "/device/");
         input_sysfs_path_len = strlen(input_sysfs_path);
-        enable(0, 1);
     }
 }
 
@@ -78,12 +77,11 @@ int GyroSensor::setInitialState() {
 }
 
 int GyroSensor::enable(int32_t handle, int en) {
-    int flags = en ? 1 : 0;
     int err;
-    if (flags != mEnabled) {
+    if (en != mEnabled) {
+         err = sspEnable(LOGTAG, SSP_GYRO, en);
          if(err >= 0){
-             mEnabled = flags;
-             err = sspEnable(LOGTAG, SSP_GYRO, en);
+             mEnabled = en;
              setInitialState();
 
              return 0;
@@ -101,7 +99,7 @@ int GyroSensor::setDelay(int32_t handle, int64_t ns)
 {
     int fd;
 
-    strcpy(&input_sysfs_path[input_sysfs_path_len], "poll_delay");
+    strcpy(&input_sysfs_path[input_sysfs_path_len], "gyro_poll_delay");
     fd = open(input_sysfs_path, O_RDWR);
     if (fd >= 0) {
         char buf[80];

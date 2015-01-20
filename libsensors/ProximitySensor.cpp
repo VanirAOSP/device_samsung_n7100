@@ -23,7 +23,7 @@
 #include <sys/select.h>
 #include <stdio.h>
 
-#include <cutils/log.h>
+#include <utils/Log.h>
 
 #include "ProximitySensor.h"
 #include "SensorBase.h"
@@ -48,7 +48,6 @@ ProximitySensor::ProximitySensor()
         strcat(input_sysfs_path, input_name);
         strcat(input_sysfs_path, "/device/");
         input_sysfs_path_len = strlen(input_sysfs_path);
-        enable(0, 1);
     }
 }
 
@@ -72,7 +71,7 @@ int ProximitySensor::setDelay(int32_t handle, int64_t ns)
 {
     int fd;
 
-    strcpy(&input_sysfs_path[input_sysfs_path_len], "poll_delay");
+    strcpy(&input_sysfs_path[input_sysfs_path_len], "prox_poll_delay");
     fd = open(input_sysfs_path, O_RDWR);
     if (fd >= 0) {
         char buf[80];
