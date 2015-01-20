@@ -27,9 +27,9 @@ BOARD_RIL_CLASS := ../../../hardware/samsung/ril
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/n7100/bluetooth
 
-#Bandaid for a problem that should not exisit
-RECOVERY_VARIANT := twrp
-DEVICE_RESOLUTION := 720x1280
+# Bandaid for a problem that should not exisit
+RECOVERY_VARIANT := aosp
+#DEVICE_RESOLUTION := 720x1280
 
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
