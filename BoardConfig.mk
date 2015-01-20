@@ -32,7 +32,7 @@ RECOVERY_VARIANT := aosp
 #DEVICE_RESOLUTION := 720x1280
 
 # Kernel
-TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
+TARGET_KERNEL_SOURCE := kernel/samsung/n7100
 TARGET_KERNEL_CONFIG := custom_n7100_defconfig
 
 # assert
